@@ -17,6 +17,7 @@
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile></AssemblyOriginatorKeyFile>
     <AssemblyName>Trails to Azure - Launcher</AssemblyName>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>

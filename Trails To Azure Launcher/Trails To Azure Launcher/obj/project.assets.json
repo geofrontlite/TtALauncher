@@ -187,7 +187,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "1.0.2",
     "restore": {
       "projectUniqueName": "D:\\Wheat\\Documents\\Kiseki\\Ao no Kiseki\\TtALauncher\\Trails To Azure Launcher\\Trails To Azure Launcher\\Trails To Azure Launcher.csproj",
       "projectName": "Trails to Azure - Launcher",
