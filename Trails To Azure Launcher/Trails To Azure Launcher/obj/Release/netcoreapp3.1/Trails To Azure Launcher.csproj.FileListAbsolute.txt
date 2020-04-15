@@ -1,0 +1,19 @@
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Release\netcoreapp3.1\Trails To Azure Launcher.exe
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Release\netcoreapp3.1\Trails To Azure Launcher.deps.json
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Release\netcoreapp3.1\Trails To Azure Launcher.runtimeconfig.json
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Release\netcoreapp3.1\Trails To Azure Launcher.runtimeconfig.dev.json
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Release\netcoreapp3.1\Trails To Azure Launcher.dll
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Release\netcoreapp3.1\Trails To Azure Launcher.pdb
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Release\netcoreapp3.1\Trails To Azure Launcher.csprojAssemblyReference.cache
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Release\netcoreapp3.1\MainWindow.g.cs
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Release\netcoreapp3.1\App.g.cs
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Release\netcoreapp3.1\Trails To Azure Launcher_MarkupCompile.cache
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Release\netcoreapp3.1\Trails To Azure Launcher_MarkupCompile.lref
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Release\netcoreapp3.1\MainWindow.baml
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Release\netcoreapp3.1\Trails To Azure Launcher.g.resources
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Release\netcoreapp3.1\Trails To Azure Launcher.csproj.CoreCompileInputs.cache
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Release\netcoreapp3.1\Trails To Azure Launcher.AssemblyInfoInputs.cache
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Release\netcoreapp3.1\Trails To Azure Launcher.AssemblyInfo.cs
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Release\netcoreapp3.1\Trails To Azure Launcher.dll
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Release\netcoreapp3.1\Trails To Azure Launcher.pdb
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Release\netcoreapp3.1\Trails To Azure Launcher.genruntimeconfig.cache

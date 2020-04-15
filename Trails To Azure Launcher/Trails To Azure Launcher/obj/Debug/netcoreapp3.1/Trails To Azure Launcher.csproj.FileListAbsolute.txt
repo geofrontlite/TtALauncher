@@ -1,0 +1,52 @@
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\Trails To Azure Launcher.exe
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\Trails To Azure Launcher.deps.json
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\Trails To Azure Launcher.runtimeconfig.json
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\Trails To Azure Launcher.runtimeconfig.dev.json
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\Trails To Azure Launcher.dll
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\Trails To Azure Launcher.pdb
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Debug\netcoreapp3.1\App.g.cs
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Debug\netcoreapp3.1\Trails To Azure Launcher_MarkupCompile.cache
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Debug\netcoreapp3.1\Trails To Azure Launcher_MarkupCompile.lref
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Debug\netcoreapp3.1\MainWindow.baml
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Debug\netcoreapp3.1\Trails To Azure Launcher.g.resources
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Debug\netcoreapp3.1\Trails To Azure Launcher.csproj.CoreCompileInputs.cache
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Debug\netcoreapp3.1\Trails To Azure Launcher.AssemblyInfoInputs.cache
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Debug\netcoreapp3.1\Trails To Azure Launcher.AssemblyInfo.cs
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Debug\netcoreapp3.1\Trails To Azure Launcher.dll
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Debug\netcoreapp3.1\Trails To Azure Launcher.pdb
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Debug\netcoreapp3.1\Trails To Azure Launcher.genruntimeconfig.cache
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Debug\netcoreapp3.1\About.g.cs
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Debug\netcoreapp3.1\About.baml
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\LibGit2Sharp.dll
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\runtimes\alpine-x64\native\libgit2-ef5a385.so
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\runtimes\alpine.3.9-x64\native\libgit2-ef5a385.so
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\runtimes\debian-arm64\native\libgit2-ef5a385.so
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\runtimes\debian.9-x64\native\libgit2-ef5a385.so
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\runtimes\fedora-x64\native\libgit2-ef5a385.so
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\libgit2-ef5a385.so
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\runtimes\osx\native\libgit2-ef5a385.dylib
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\runtimes\rhel-x64\native\libgit2-ef5a385.so
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\runtimes\ubuntu.16.04-arm64\native\libgit2-ef5a385.so
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\runtimes\ubuntu.18.04-x64\native\libgit2-ef5a385.so
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\git2-ef5a385.dll
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\git2-ef5a385.pdb
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\git2-ef5a385.dll
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\git2-ef5a385.pdb
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Debug\netcoreapp3.1\Trails To Azure Launcher.csproj.CopyComplete
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Debug\netcoreapp3.1\Error.g.cs
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Debug\netcoreapp3.1\Error.baml
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Debug\netcoreapp3.1\Interop.IWshRuntimeLibrary.dll
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Debug\netcoreapp3.1\Trails To Azure Launcher.csproj.ResolveComReference.cache
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\Interop.IWshRuntimeLibrary.dll
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\obj\Debug\netcoreapp3.1\Trails To Azure Launcher.csprojAssemblyReference.cache
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\DeltaCompressionDotNet.MsDelta.dll
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\DeltaCompressionDotNet.PatchApi.dll
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\DeltaCompressionDotNet.dll
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\Mono.Cecil.Mdb.dll
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\Mono.Cecil.Pdb.dll
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\Mono.Cecil.Rocks.dll
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\Mono.Cecil.dll
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\SharpCompress.dll
+D:\Wheat\Documents\Kiseki\Ao no Kiseki\TtALauncher\Trails To Azure Launcher\Trails To Azure Launcher\bin\Debug\netcoreapp3.1\Splat.dll
