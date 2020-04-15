@@ -83,8 +83,8 @@ namespace Trails_To_Azure_Launcher
         {
             new String[]{ "Game is installed", "Game is not installed", "An update is available" },//Game
             new String[]{ "", "", "An update is available" },//Edits
-            new String[]{ "Evo voice mod is\n      installed", "Evo voice mod is not\n   installed", "An update is available" },//Voice mod
-            new String[]{ "Evo BGM mod is\n      installed", "Evo BGM mod is not\n   installed", "An update is available" },//Evo BGM mod
+            new String[]{ "Evo voice mod is\n      installed", "Evo voice mod is not\n         installed", "An update is available" },//Voice mod
+            new String[]{ "Evo BGM mod is\n      installed", "Evo BGM mod is not\n         installed", "An update is available" },//Evo BGM mod
             new String[]{ "HD pack is installed", "HD pack is not installed", "An update is available" }//HD Pack
         };
 
@@ -127,10 +127,10 @@ namespace Trails_To_Azure_Launcher
             ((Label)this.FindName(statsNames[(int)ContentInfo.Types.Game])).Content = 
                         statusMessages[(int)ContentInfo.Types.Game][(installed == false) ? (int)InstallTypes.Uninstall : (int)InstallTypes.Install];
             ((Label)this.FindName(statsNames[(int)ContentInfo.Types.Game])).Foreground = (installed) ? Brushes.DarkGreen : Brushes.DarkRed;
-            ((Button)this.FindName("edits_btn")).IsEnabled = installed;
-            ((Button)this.FindName("voice_btn")).IsEnabled = installed;
-            ((Button)this.FindName("bgm_btn")).IsEnabled = installed;
-            ((Button)this.FindName("hd_btn")).IsEnabled = installed;
+            ((Button)this.FindName(buttonNames[(int)ContentInfo.Types.GeoLiteEdits])).IsEnabled = installed;
+            ((Button)this.FindName(buttonNames[(int)ContentInfo.Types.Voice])).IsEnabled = installed;
+            ((Button)this.FindName(buttonNames[(int)ContentInfo.Types.Evo_BGM])).IsEnabled = installed;
+            ((Button)this.FindName(buttonNames[(int)ContentInfo.Types.HDPack])).IsEnabled = installed;
 
             installed = GameUtils.isTypeInstalled(ContentInfo.Types.Voice);
             //Voice mod

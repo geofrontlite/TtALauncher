@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "fKFnzdq0DMh6gbDe3luW6+S9+bAWAifd0Sn5sSQte8wEtxlBFv+Vwx2K2weZTh3ThcSZb+QIJFPrOs+kHQpUFA==",
+  "success": true,
+  "projectFilePath": "D:\\Wheat\\Documents\\Kiseki\\Ao no Kiseki\\TtALauncher\\Trails To Azure Launcher\\Trails To Azure Launcher\\Trails To Azure Launcher.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Wheat\\.nuget\\packages\\libgit2sharp\\0.27.0-preview-0034\\libgit2sharp.0.27.0-preview-0034.nupkg.sha512",
+    "C:\\Users\\Wheat\\.nuget\\packages\\libgit2sharp.nativebinaries\\2.0.298\\libgit2sharp.nativebinaries.2.0.298.nupkg.sha512",
+    "C:\\Users\\Wheat\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\Wheat\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\3.1.3\\microsoft.netcore.app.runtime.win-x64.3.1.3.nupkg.sha512",
+    "C:\\Users\\Wheat\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\3.1.3\\microsoft.windowsdesktop.app.runtime.win-x64.3.1.3.nupkg.sha512",
+    "C:\\Users\\Wheat\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\3.1.3\\microsoft.aspnetcore.app.runtime.win-x64.3.1.3.nupkg.sha512"
+  ],
+  "logs": []
+}

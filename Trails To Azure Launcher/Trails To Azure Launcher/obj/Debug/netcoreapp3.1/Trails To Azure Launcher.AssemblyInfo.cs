@@ -11,11 +11,11 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("Trails To Azure Launcher")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("GeofrontLite")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-[assembly: System.Reflection.AssemblyProductAttribute("Trails To Azure Launcher")]
+[assembly: System.Reflection.AssemblyProductAttribute("Trails To Azure - Launcher")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Trails To Azure Launcher")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 

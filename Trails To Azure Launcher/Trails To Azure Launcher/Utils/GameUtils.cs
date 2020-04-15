@@ -25,17 +25,17 @@ namespace Trails_To_Azure_Launcher.Utils
                 return true;
             }
             //Voice mod
-            else if ((Directory.Exists("voice") && File.Exists("dinput8.dll")) || type == ContentInfo.Types.Voice)
+            else if ((Directory.Exists("voice") && File.Exists("dinput8.dll")) && type == ContentInfo.Types.Voice)
             {
                 return true;
             }
             //BGM mod
-            else if ((Directory.Exists("data/bgm_org")) || type == ContentInfo.Types.Evo_BGM)
+            else if ((Directory.Exists("data/bgm_org")) && type == ContentInfo.Types.Evo_BGM)
             {
                 return true;
             }
             //HD mod
-            else if ((File.Exists("d3d9.dll")) || type == ContentInfo.Types.HDPack)
+            else if ((File.Exists("d3d9.dll")) && type == ContentInfo.Types.HDPack)
             {
                 return true;
             }
@@ -67,7 +67,12 @@ namespace Trails_To_Azure_Launcher.Utils
             {
                 window.Dispatcher.Invoke(() =>
                 {
-                    ((Label)window.FindName("stat_update")).Content = "Everything is up to date!";
+                    for (byte i = 0; i < MainWindow.buttonNames.Length; i++)
+                    {
+                        ((Button)window.FindName(MainWindow.buttonNames[i])).IsEnabled = (i == 0) ? true : GameUtils.isTypeInstalled((ContentInfo.Types)i);
+                    }
+
+                    ((Label)window.FindName("stat_update")).Content = "";
                 });
                 checkingForUpdate = false;
                 return;
@@ -148,9 +153,9 @@ namespace Trails_To_Azure_Launcher.Utils
                 {
                     window.Dispatcher.Invoke(() =>
                     {
-                        foreach (String btnName in MainWindow.buttonNames)
+                        for (byte i = 0; i < MainWindow.buttonNames.Length; i++)
                         {
-                            ((Button)window.FindName(btnName)).IsEnabled = true;
+                            ((Button)window.FindName(MainWindow.buttonNames[i])).IsEnabled = (i == 0) ? true : GameUtils.isTypeInstalled((ContentInfo.Types)i);
                         }
 
                         ((Label)window.FindName("stat_update")).Content = "Failed to connect to the internet";
@@ -191,9 +196,9 @@ namespace Trails_To_Azure_Launcher.Utils
 
             window.Dispatcher.Invoke(() =>
             {
-                foreach (String btnName in MainWindow.buttonNames)
+                for (byte i = 0; i < MainWindow.buttonNames.Length; i++)
                 {
-                    ((Button)window.FindName(btnName)).IsEnabled = true;
+                    ((Button)window.FindName(MainWindow.buttonNames[i])).IsEnabled = (i == 0) ? true : GameUtils.isTypeInstalled((ContentInfo.Types)i);
                 }
 
                 ((Label)window.FindName("stat_update")).Content = (foundUpdate > 0) ? ((foundUpdate == 1) ? "An update is available." : "Updates are available.") : "Everything is up to date!";

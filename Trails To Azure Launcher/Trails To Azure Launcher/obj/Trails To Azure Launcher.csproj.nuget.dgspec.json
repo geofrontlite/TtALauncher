@@ -48,10 +48,6 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.3, )"
-            },
-            "squirrel.windows": {
-              "target": "Package",
-              "version": "[1.9.1, )"
             }
           },
           "imports": [
