@@ -111,6 +111,11 @@ namespace Trails_To_Azure_Launcher.Utils
             //Repair manifest if needed
             for (byte i = 0; i < ContentInfo.TypesAsString.Length; i++)
             {
+                if (i == (byte)ContentInfo.Types.GeoLiteEdits)//Geofront Lite edits should NOT be added to the manifest. Rather let the installer take care of it
+                {
+                    continue;
+                }
+
                 //Game is installed but not in the manifest
                 if (GameUtils.isTypeInstalled((ContentInfo.Types)i) == true && manifest.Any(m => String.Equals(m.type, ContentInfo.TypesAsString[i], StringComparison.OrdinalIgnoreCase)) == false)
                 {

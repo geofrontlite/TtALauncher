@@ -69,7 +69,7 @@ namespace Trails_To_Azure_Launcher
         public static readonly String[][] buttonText = new String[][]
         {
             new String[]{ "Install Game", "Uninstall Game", "Update Game" },//Game
-            new String[]{ null, null, "Update Edits" },//Edits
+            new String[]{ "install?INVALID", null, "Update Edits" },//Edits
             new String[]{ "Install Evo Voice Mod", "Uninstall Evo Voice Mod", "Update Evo Voice Mod" },//Voice mod
             new String[]{ "Install Evo BGM Mod", "Uninstall Evo BGM Mod", "Update Evo BGM Mod" },//Evo BGM mod
             new String[]{ "Install HD Pack\n(w/ DS4 Prompts)", "Uninstall HD Pack\n(and DS4 Prompts)", "Update HD Pack\n(w/ DS4 Prompts)" }//HD Pack
@@ -335,6 +335,7 @@ namespace Trails_To_Azure_Launcher
             ((Rectangle)this.FindName("inst_hider")).Visibility = (visible) ? Visibility.Visible : Visibility.Hidden;
             ((Rectangle)this.FindName("inst_panel")).Visibility = (visible) ? Visibility.Visible : Visibility.Hidden;
             ((Label)this.FindName("inst_oper")).Visibility = (visible) ? Visibility.Visible : Visibility.Hidden;
+            ((Label)this.FindName("inst_info")).Visibility = (visible && performingType != InstallTypes.Uninstall) ? Visibility.Visible : Visibility.Hidden;
             ((ProgressBar)this.FindName("inst_prog")).Visibility = (visible) ? Visibility.Visible : Visibility.Hidden;
             ((Label)this.FindName("inst_progPerc")).Visibility = (visible) ? Visibility.Visible : Visibility.Hidden;
             ((Label)this.FindName("inst_size")).Visibility = (visible && performingType != InstallTypes.Uninstall) ? Visibility.Visible : Visibility.Hidden;
@@ -455,8 +456,6 @@ namespace Trails_To_Azure_Launcher
                 ((Label)this.FindName("inst_size")).Content = "Size: " + FileUtils.SizeSuffix(ContentInfo.diskSize[(int)typeProcessing], 2);
 
                 ((Label)this.FindName("inst_oper")).Content = ContentInfo.installMessages[(int)typeProcessing][0];
-
-                Task.Run(() => GUIUtils.autoAdjustMargins(this, "inst_oper", false));
 
                 for (byte i = 1; i < ContentInfo.installMessages[(int)typeProcessing].Length; i++)
                 {

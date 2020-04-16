@@ -79,15 +79,16 @@
 
 
         <Rectangle x:Name="inst_hider" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Grid.Row="1" Stroke="Black" VerticalAlignment="Stretch" Fill="#54000000" Visibility="Hidden"/>
-        <Rectangle x:Name="inst_panel" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Height="250" Grid.Row="1" Stroke="Black" VerticalAlignment="Stretch" Width="600" Fill="#FFCBCBCB" Margin="0,0,0,150" Visibility="Hidden"/>
-        <Label x:Name="inst_oper" Content="{}{OPERATION}" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" FontSize="36" Margin="140,0,-2,340" FontFamily="Arial" FontWeight="Bold" Visibility="Hidden"/>
+        <Rectangle x:Name="inst_panel" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Height="250" Grid.Row="1" Stroke="Black" VerticalAlignment="Stretch" Width="600" Fill="#FFCBCBCB" Margin="0,0,0,150" Visibility="Visible"/>
+        <Label x:Name="inst_oper" Content="{}{OPERATION}" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="3" FontSize="36" Margin="141,130,-2,0" FontFamily="Arial" FontWeight="Bold" Visibility="Visible"/>
         
-        <Label x:Name="inst_proc1" Content="{}{PROCEEDURE}" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" FontSize="16" Margin="150,0,0,240" FontFamily="Arial" Visibility="Hidden"/>
+        <Label x:Name="inst_proc1" Content="{}{PROCEEDURE}" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" FontSize="16" Margin="150,0,0,240" FontFamily="Arial" Visibility="Visible"/>
         <Label x:Name="inst_proc2" Content="{}{PROCEEDURE}" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" FontSize="16" Margin="150,0,0,200" FontFamily="Arial" Visibility="Hidden"/>
         <Label x:Name="inst_proc3" Content="{}{PROCEEDURE}" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" FontSize="16" Margin="150,0,0,160" FontFamily="Arial" Visibility="Hidden"/>
         <Label x:Name="inst_proc4" Content="{}{PROCEEDURE}" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" FontSize="16" Margin="150,0,0,120" FontFamily="Arial" Visibility="Hidden"/>
         <Label x:Name="inst_proc5" Content="{}{PROCEEDURE}" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" FontSize="16" Margin="150,0,0,80" FontFamily="Arial" Visibility="Hidden"/>
-        
+
+        <Label x:Name="inst_info" Content="(It is normal for the progress percentage to be still for long periods of time)" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" Visibility="Hidden" Foreground="#FF4E4E4E" Margin="0,0,0,42"/>
         <ProgressBar x:Name="inst_prog" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.ColumnSpan="3" Grid.Row="1" Height="24" Width="500" Foreground="#FF0645B0" SmallChange="0.05" Visibility="Hidden"/>
         <Label x:Name="inst_progPerc" Content="0%" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" FontSize="16" Margin="0,0,0,2" Visibility="Hidden"/>
         <Label x:Name="inst_size" Content="Size: " HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" Visibility="Hidden" Margin="400,60,0,0" Foreground="#FF4E4E4E"/>
