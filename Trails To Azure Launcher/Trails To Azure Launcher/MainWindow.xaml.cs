@@ -11,6 +11,7 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Security.AccessControl;
+using System.Security.Principal;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -51,7 +52,9 @@ namespace Trails_To_Azure_Launcher
         private ContentInfo.Types typeProcessing = ContentInfo.Types.None;
 
         private Task cloneRepoTask;
+        private CancellationTokenSource cancelCloneRepoToken = new CancellationTokenSource();
         private Task uninstallTask;
+        private CancellationTokenSource cancelUninstallToken = new CancellationTokenSource();
         private Timer installTask;
         public static Timer checkForUpdatesTimer;
 
@@ -105,6 +108,8 @@ namespace Trails_To_Azure_Launcher
             if (inAProcess == true)
             {
                 e.Cancel = true;
+                ExitConfirm exit = new ExitConfirm();
+                exit.Show();
             }
             else
             {
@@ -177,7 +182,8 @@ namespace Trails_To_Azure_Launcher
             {
                 //Install edits
                 Button placeHolder = new Button();
-                placeHolder.Name = "edits_btn";
+                placeHolder.Name = buttonNames[(int)ContentInfo.Types.GeoLiteEdits];
+                placeHolder.Content = buttonText[(int)ContentInfo.Types.GeoLiteEdits][(int)InstallTypes.Install];//Needed so the app knows to install it
                 install(placeHolder, null);
                 return;
             }
@@ -195,7 +201,8 @@ namespace Trails_To_Azure_Launcher
                 manifest.Any(m => String.Equals(m.type, ContentInfo.TypesAsString[1], StringComparison.OrdinalIgnoreCase)) == false)//Does not have edits
             {
                 Button placeHolder = new Button();
-                placeHolder.Name = "edits_btn";
+                placeHolder.Name = buttonNames[(int)ContentInfo.Types.GeoLiteEdits];
+                placeHolder.Content = buttonText[(int)ContentInfo.Types.GeoLiteEdits][(int)InstallTypes.Install];//Needed so the app knows to install it
                 install(placeHolder, null);
             }
         }
@@ -272,12 +279,50 @@ namespace Trails_To_Azure_Launcher
             {
                 App.Current.Shutdown();
             }
+            else
+            {
+                ExitConfirm exit = new ExitConfirm();
+                exit.Show();
+            }
         }
 
         private void ShowError(String code, String msg)
         {
             Error error = new Error(code, msg);
             error.Show();
+            cancelInstallation();
+        }
+
+        private void RestartAsAdmin(Object sender, RoutedEventArgs e)
+        {
+            String exePath = Assembly.GetEntryAssembly().Location;// The path of the file that will launch when the shortcut is run
+
+            if (exePath.EndsWith(".dll", StringComparison.OrdinalIgnoreCase))
+            {
+                exePath = exePath.Substring(0, exePath.Length - 4) + ".exe";
+            }
+
+            ProcessStartInfo info = new ProcessStartInfo(exePath);
+            info.UseShellExecute = true;
+            info.Verb = "runas";
+            Process.Start(info);
+
+            App.Current.Shutdown();
+        }
+
+        private void CloseInsuffPrivsPrompt(Object sender, RoutedEventArgs e)
+        {
+            toggleInsuffPrivsPrompt(false);
+        }
+
+        private void toggleInsuffPrivsPrompt(bool show)
+        {
+            ((Rectangle)this.FindName("elev_hider")).Visibility = (show) ? Visibility.Visible : Visibility.Hidden;
+            ((Rectangle)this.FindName("elev_panel")).Visibility = (show) ? Visibility.Visible : Visibility.Hidden;
+            ((Label)this.FindName("elev_header")).Visibility = (show) ? Visibility.Visible : Visibility.Hidden;
+            ((Label)this.FindName("elev_msg")).Visibility = (show) ? Visibility.Visible : Visibility.Hidden;
+            ((Button)this.FindName("elev_yes_btn")).Visibility = (show) ? Visibility.Visible : Visibility.Hidden;
+            ((Button)this.FindName("elev_no_btn")).Visibility = (show) ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void toggleInstallationView(bool visible)
@@ -293,6 +338,7 @@ namespace Trails_To_Azure_Launcher
             ((ProgressBar)this.FindName("inst_prog")).Visibility = (visible) ? Visibility.Visible : Visibility.Hidden;
             ((Label)this.FindName("inst_progPerc")).Visibility = (visible) ? Visibility.Visible : Visibility.Hidden;
             ((Label)this.FindName("inst_size")).Visibility = (visible && performingType != InstallTypes.Uninstall) ? Visibility.Visible : Visibility.Hidden;
+            ((Button)this.FindName("inst_cancel")).Visibility = (visible) ? Visibility.Visible : Visibility.Hidden;
 
             for (byte i = 0; i < numOfProceedures; i++)
             {
@@ -300,8 +346,89 @@ namespace Trails_To_Azure_Launcher
             }
         }
 
+        private void CancelInstallation(Object sender, RoutedEventArgs e)
+        {
+            cancelInstallation();
+        }
+
+        private void cancelInstallation()
+        {
+            ((Button)this.FindName("inst_cancel")).IsEnabled = false;
+            ((Label)this.FindName("inst_cancelmsg")).Visibility = Visibility.Visible;
+            String type = ((performingType == InstallTypes.Install) ? "installation" : ((performingType == InstallTypes.Uninstall) ? "uninstallation" : "update"));
+            ((Label)this.FindName("inst_cancelmsg")).Content = "Cancelling " + type + "..." + ((performingType == InstallTypes.Install && typeProcessing == ContentInfo.Types.Game) ? " (this may take a while)" : "");
+
+            Task.Factory.StartNew((window) =>
+            {
+                if (cloneRepoTask != null && cloneRepoTask.IsCompleted == false)
+                {
+                    cancelCloneRepoToken.Cancel();
+                }
+                if (uninstallTask != null && uninstallTask.IsCompleted == false)
+                {
+                    cancelUninstallToken.Cancel();
+                }
+                if (installTask != null)
+                {
+                    try
+                    {
+                        installTask.Dispose();
+                    }
+                    catch { }
+                }
+                if (uninstallTask != null)
+                {
+                    try
+                    {
+                        uninstallTask.Dispose();
+                    }
+                    catch { }
+                }
+
+                if (cloneRepoTask != null && cloneRepoTask.IsCompleted == false)
+                {
+                    cloneRepoTask.Wait();
+                    cloneRepoTask.Dispose();
+                }
+                if (uninstallTask != null && uninstallTask.IsCompleted == false)
+                {
+                    uninstallTask.Wait();
+                    uninstallTask.Dispose();
+                }
+
+                while (cleanTempFolder() == false)
+                {
+                    Thread.Sleep(20);
+                }
+
+                inAProcess = false;
+                onProcess = 0;
+                performingType = InstallTypes.None;
+
+                MainWindow win = (MainWindow)window;
+
+                win.Dispatcher.Invoke(() =>
+                {
+                    ((Label)this.FindName("inst_cancelmsg")).Visibility = Visibility.Hidden;
+                    toggleInstallationView(false);
+                    ((Button)this.FindName("inst_cancel")).IsEnabled = true;
+                });
+            }, this);
+        }
+
         private void install(Object sender, RoutedEventArgs e)
         {
+            using (WindowsIdentity identity = WindowsIdentity.GetCurrent())
+            {
+                WindowsPrincipal principal = new WindowsPrincipal(identity);
+
+                if (principal.IsInRole(WindowsBuiltInRole.Administrator) == false)
+                {
+                    toggleInsuffPrivsPrompt(true);
+                    return;
+                }
+            }
+
             Button requestSrc = ((Button)sender);
 
             inAProcess = true;
@@ -356,12 +483,12 @@ namespace Trails_To_Azure_Launcher
 
                 if (typeProcessing == ContentInfo.Types.Game)//Uninstalling the game uninstalls everything
                 {
-                    uninstallTask = Task.Run(() => uninstallAllAction(this));
+                    uninstallTask = Task.Run(() => uninstallAllAction(this), cancelUninstallToken.Token);
                     installTask = new Timer(watchUninstallAllTask, null, 0, 200);
                 }
                 else
                 {
-                    uninstallTask = Task.Run(() => uninstallAction(this));
+                    uninstallTask = Task.Run(() => uninstallAction(this), cancelUninstallToken.Token);
                     installTask = new Timer(watchUninstallTask, null, 0, 80);
                 }
             }
@@ -384,7 +511,7 @@ namespace Trails_To_Azure_Launcher
                     ((Label)this.FindName("inst_proc" + i)).Foreground = (i == 1) ? Brushes.DarkGoldenrod : Brushes.DarkRed;
                 }
 
-                uninstallTask = Task.Run(() => uninstallAction(this));//Uninstall task because it uninstalls first
+                uninstallTask = Task.Run(() => uninstallAction(this), cancelUninstallToken.Token);//Uninstall task because it uninstalls first
                 installTask = new Timer(watchUpdateTask, null, 0, 120);
             }
             else
@@ -418,7 +545,7 @@ namespace Trails_To_Azure_Launcher
                 if (cleanTempFolder() == true)
                 {
                     onProcess = 1;
-                    cloneRepoTask = Task.Run(() => cloneGameRepo(this, gitCredentials));
+                    cloneRepoTask = Task.Run(() => cloneGameRepo(this, gitCredentials), cancelCloneRepoToken.Token);
                 }
                 else
                 {
@@ -619,7 +746,8 @@ namespace Trails_To_Azure_Launcher
                         this.Dispatcher.Invoke(() =>
                         {
                             Button placeHolder = new Button();
-                            placeHolder.Name = "edits_btn";
+                            placeHolder.Name = buttonNames[(int)ContentInfo.Types.GeoLiteEdits];
+                            placeHolder.Content = buttonText[(int)ContentInfo.Types.GeoLiteEdits][(int)InstallTypes.Install];//Needed so the app knows to install it
                             install(placeHolder, null);
                         });
                     }
@@ -736,7 +864,7 @@ namespace Trails_To_Azure_Launcher
 
                         if (runAgain == true)
                         {
-                            uninstallTask = Task.Run(() => uninstallAction(this));
+                            uninstallTask = Task.Run(() => uninstallAction(this), cancelUninstallToken.Token);
                         }
                     }
                     return;
@@ -883,7 +1011,7 @@ namespace Trails_To_Azure_Launcher
 
                             if (runAgain == true)
                             {
-                                uninstallTask = Task.Run(() => uninstallAction(this));
+                                uninstallTask = Task.Run(() => uninstallAction(this), cancelUninstallToken.Token);
                                 return;
                             }
                         }
@@ -962,7 +1090,7 @@ namespace Trails_To_Azure_Launcher
                     {
                         onProcess = 12;
                         timeBuildUp = 0 - new Random().Next(3000);
-                        cloneRepoTask = Task.Run(() => cloneGameRepo(this, gitCredentials));
+                        cloneRepoTask = Task.Run(() => cloneGameRepo(this, gitCredentials), cancelCloneRepoToken.Token);
                     }
                     else
                     {
@@ -1292,7 +1420,7 @@ namespace Trails_To_Azure_Launcher
 
             if (uninstallTask.IsCompleted && size > 0)
             {
-                uninstallTask = Task.Run(() => uninstallAllAction(this));
+                uninstallTask = Task.Run(() => uninstallAllAction(this), cancelUninstallToken.Token);
             }
             else if(uninstallTask.IsCompleted)//Make sure the task was completed
             {

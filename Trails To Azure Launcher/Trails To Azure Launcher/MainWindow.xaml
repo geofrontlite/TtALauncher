@@ -64,7 +64,7 @@
 
         <Button x:Name="voice_btn" Content="Install Evo Voice Mod" Width="Auto" Grid.Row="1" Height="30" VerticalAlignment="Top" Margin="16,365,16,20" Background="#FFD0D0D0" FontSize="16" BorderBrush="#FF979797" Click="install"/>
         <Button x:Name="bgm_btn" Content="Install Evo BGM Mod" Width="Auto" Grid.Row="1" Height="30" VerticalAlignment="Top" Margin="16,415,16,20" Background="#FFD0D0D0" FontSize="16" BorderBrush="#FF979797" Click="install" ToolTip="Will make a backup of the original BGM as well as a backup of data/text/t_bgm._dt."/>
-        <Button x:Name="hd_btn" Content="     Install HD Pack&#xA;(w/ DS4 Prompts)" Width="Auto" Grid.Row="1" Height="50" VerticalAlignment="Top" Margin="16,465,16,20" Background="#FFD0D0D0" FontSize="16" BorderBrush="#FF979797" FontStretch="Normal" UseLayoutRounding="False" HorizontalAlignment="Stretch" Click="install"/>
+        <Button x:Name="hd_btn" Content="  Install HD Pack&#xA;(w/ DS4 Prompts)" Width="Auto" Grid.Row="1" Height="50" VerticalAlignment="Top" Margin="16,465,16,20" Background="#FFD0D0D0" FontSize="16" BorderBrush="#FF979797" FontStretch="Normal" UseLayoutRounding="False" HorizontalAlignment="Stretch" Click="install"/>
         
         <Border BorderThickness="1" BorderBrush="#19000000" Grid.Row="1" Width="2" HorizontalAlignment="Right"/>
         
@@ -79,8 +79,8 @@
 
 
         <Rectangle x:Name="inst_hider" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Grid.Row="1" Stroke="Black" VerticalAlignment="Stretch" Fill="#54000000" Visibility="Hidden"/>
-        <Rectangle x:Name="inst_panel" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Height="240" Grid.Row="1" Stroke="Black" VerticalAlignment="Stretch" Width="600" Fill="#FFCBCBCB" Margin="0,0,0,150" Visibility="Hidden"/>
-        <Label x:Name="inst_oper" Content="{}{OPERATION}" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" FontSize="36" Margin="140,0,0,330" FontFamily="Arial" FontWeight="Bold" Visibility="Hidden"/>
+        <Rectangle x:Name="inst_panel" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Height="250" Grid.Row="1" Stroke="Black" VerticalAlignment="Stretch" Width="600" Fill="#FFCBCBCB" Margin="0,0,0,150" Visibility="Hidden"/>
+        <Label x:Name="inst_oper" Content="{}{OPERATION}" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" FontSize="36" Margin="140,0,-2,340" FontFamily="Arial" FontWeight="Bold" Visibility="Hidden"/>
         
         <Label x:Name="inst_proc1" Content="{}{PROCEEDURE}" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" FontSize="16" Margin="150,0,0,240" FontFamily="Arial" Visibility="Hidden"/>
         <Label x:Name="inst_proc2" Content="{}{PROCEEDURE}" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" FontSize="16" Margin="150,0,0,200" FontFamily="Arial" Visibility="Hidden"/>
@@ -91,7 +91,20 @@
         <ProgressBar x:Name="inst_prog" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.ColumnSpan="3" Grid.Row="1" Height="24" Width="500" Foreground="#FF0645B0" SmallChange="0.05" Visibility="Hidden"/>
         <Label x:Name="inst_progPerc" Content="0%" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" FontSize="16" Margin="0,0,0,2" Visibility="Hidden"/>
         <Label x:Name="inst_size" Content="Size: " HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" Visibility="Hidden" Margin="400,60,0,0" Foreground="#FF4E4E4E"/>
+        
+        <Button x:Name="inst_cancel" Content="Cancel" HorizontalAlignment="Center" Margin="0,340,400,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="3" FontSize="14" Padding="24,3,24,3" Background="#FFE4E4E4" Click="CancelInstallation" Visibility="Hidden"/>
+        <Label x:Name="inst_cancelmsg" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" Visibility="Hidden" Margin="265,58,0,0" Foreground="#FF383838" FontSize="13"/>
+        
 
         <Label x:Name="stat_update" Content="Everything is up to date!" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Bottom" FontFamily="Arial" Foreground="#FF656565" Margin="4,4,0,0"/>
+
+        <Rectangle x:Name="elev_hider" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Grid.Row="1" Stroke="Black" VerticalAlignment="Stretch" Fill="#54000000" Visibility="Hidden"/>
+        <Rectangle x:Name="elev_panel" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Height="180" Grid.Row="1" Stroke="Black" VerticalAlignment="Stretch" Width="600" Fill="#FFCBCBCB" Margin="0,0,0,150" Visibility="Hidden"/>
+        
+        <Label x:Name="elev_header" Content="Insufficient Privileges" HorizontalAlignment="Center" Margin="0,160,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="3" FontSize="36" Visibility="Hidden"/>
+        <Label x:Name="elev_msg" Content="To perform this operation, the application must be in&#10;administrator mode. Restart app in administrator mode?" HorizontalAlignment="Center" Margin="0,225,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="3" FontSize="18" Visibility="Hidden"/>
+
+        <Button x:Name="elev_yes_btn" Content="Yes" HorizontalAlignment="Center" Margin="0,290,200,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="3" FontSize="18" Padding="30,4,30,4" Background="#FFC2C4D9" Click="RestartAsAdmin" Visibility="Hidden"/>
+        <Button x:Name="elev_no_btn" Content="No" HorizontalAlignment="Center" Margin="0,290,-200,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="3" FontSize="18" Padding="30,4,30,4" Background="#FFE4E4E4" Click="CloseInsuffPrivsPrompt" Visibility="Hidden"/>
     </Grid>
 </Window>

@@ -12,12 +12,18 @@
     <Compile Update="About.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="ExitConfirm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Error.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="About.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ExitConfirm.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
