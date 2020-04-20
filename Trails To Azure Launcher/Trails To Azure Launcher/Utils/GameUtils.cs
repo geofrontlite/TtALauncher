@@ -43,7 +43,7 @@ namespace Trails_To_Azure_Launcher.Utils
             return false;
         }
 
-        public static void checkForUpdates(Window window)
+        public static void checkForUpdates(MainWindow window)
         {
             if (checkingForUpdate == true)
             {
@@ -52,6 +52,7 @@ namespace Trails_To_Azure_Launcher.Utils
 
             checkingForUpdate = true;
 
+            //Disable all buttons while checking for update
             window.Dispatcher.Invoke(() =>
             {
                 foreach (String btnName in MainWindow.buttonNames)
@@ -62,6 +63,82 @@ namespace Trails_To_Azure_Launcher.Utils
                 ((Label)window.FindName("stat_update")).Content = "Checking for updates...";
             });
 
+            //Check if there's an update for the launcher first
+            #region launcher
+            LiveVersion launcherVersion = null;
+            bool launcherNeedsUpdated = false;
+
+            try
+            {
+                using (WebClient client = new WebClient())
+                {
+                    client.Headers.Add("Authorization", MyGitCredentials.token);
+                    launcherVersion = JsonConvert.DeserializeObject<LiveVersion>(client.DownloadString("https://raw.githubusercontent.com/geofrontlite/TtALauncher/master/version.json"));
+                }
+            }
+            catch (WebException e)//No internet connection
+            {
+                window.Dispatcher.Invoke(() =>
+                {
+                    for (byte i = 0; i < MainWindow.buttonNames.Length; i++)
+                    {
+                        if ((ContentInfo.Types)i != ContentInfo.Types.GeoLiteEdits)
+                        {
+                            ((Button)window.FindName(MainWindow.buttonNames[i])).IsEnabled = (i == 0) ? true : GameUtils.isTypeInstalled((int)ContentInfo.Types.Game);
+                        }
+                    }
+
+                    ((Label)window.FindName("stat_update")).Content = "Failed to connect to the internet";
+                });
+                checkingForUpdate = false;
+                return;
+            }
+
+            String ver = window.GetType().Assembly.GetName().Version.ToString();
+            String[] currentVersion = ver.Substring(0, ver.Length - 2).Split('.', StringSplitOptions.RemoveEmptyEntries);
+            String[] liveVersion = launcherVersion.version.Split('.', StringSplitOptions.RemoveEmptyEntries);
+
+            for (byte j = 0; j < liveVersion.Length; j++)
+            {
+                if ((j >= currentVersion.Length && liveVersion[j] != "0") || String.Compare(liveVersion[j], currentVersion[j]) > 0)//Behind in update(s)
+                {
+                    launcherNeedsUpdated = true;
+                    break;
+                }
+            }
+
+            window.updateURL = "https://github.com/geofrontlite/TtALauncher/releases/download/v" + launcherVersion.version +  "/TtA-Updater.exe";
+
+            if (launcherNeedsUpdated == true)
+            {
+                window.Dispatcher.Invoke(() =>
+                {
+                    window.toggleUpdatePrompt(true);
+
+                    if (launcherVersion.required == true)
+                    {
+                        ((Label)window.FindName("update_msg_aggressive")).Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        ((Label)window.FindName("update_msg_passive")).Visibility = Visibility.Visible;
+                    }
+                });
+            }
+
+
+            if (launcherVersion != null && launcherVersion.required == true && launcherNeedsUpdated == true)
+            {
+                window.Dispatcher.Invoke(() =>
+                {
+                    ((Label)window.FindName("stat_update")).Content = "Cannot update components until\nlauncher is updated.";
+                });
+
+                checkingForUpdate = false;
+                return;
+            }
+            #endregion
+
             //Nothing is installed yet
             if ((File.Exists("manifest.json") == false || new FileInfo("manifest.json").Length == 0) && GameUtils.isTypeInstalled(ContentInfo.Types.Game) == false)
             {
@@ -69,7 +146,10 @@ namespace Trails_To_Azure_Launcher.Utils
                 {
                     for (byte i = 0; i < MainWindow.buttonNames.Length; i++)
                     {
-                        ((Button)window.FindName(MainWindow.buttonNames[i])).IsEnabled = (i == 0) ? true : GameUtils.isTypeInstalled((ContentInfo.Types)i);
+                        if ((ContentInfo.Types)i != ContentInfo.Types.GeoLiteEdits)
+                        {
+                            ((Button)window.FindName(MainWindow.buttonNames[i])).IsEnabled = (i == 0) ? true : GameUtils.isTypeInstalled((int)ContentInfo.Types.Game);
+                        }
                     }
 
                     ((Label)window.FindName("stat_update")).Content = "";
@@ -137,7 +217,8 @@ namespace Trails_To_Azure_Launcher.Utils
             }
 
             byte foundUpdate = 0;
-            Manifest liveManifestEntry;
+            bool updateForEdits = false;
+            LiveVersion _liveVersion;
 
             for (byte i = 0; i < ContentInfo.liveVersionURLs.Length; i++)
             {
@@ -150,17 +231,20 @@ namespace Trails_To_Azure_Launcher.Utils
                 {
                     using (WebClient client = new WebClient())
                     {
-                        client.Headers.Add("Authorization", ContentInfo.githubAuthHeader);
-                        liveManifestEntry = JsonConvert.DeserializeObject<Manifest>(client.DownloadString(ContentInfo.liveVersionURLs[i]));
+                        client.Headers.Add("Authorization", MyGitCredentials.token);
+                        _liveVersion = JsonConvert.DeserializeObject<LiveVersion>(client.DownloadString(ContentInfo.liveVersionURLs[i]));
                     }
                 }
-                catch (WebException)//No internet connection
+                catch (WebException e)//No internet connection
                 {
                     window.Dispatcher.Invoke(() =>
                     {
                         for (byte i = 0; i < MainWindow.buttonNames.Length; i++)
                         {
-                            ((Button)window.FindName(MainWindow.buttonNames[i])).IsEnabled = (i == 0) ? true : GameUtils.isTypeInstalled((ContentInfo.Types)i);
+                            if ((ContentInfo.Types)i != ContentInfo.Types.GeoLiteEdits)
+                            {
+                                ((Button)window.FindName(MainWindow.buttonNames[i])).IsEnabled = (i == 0) ? true : GameUtils.isTypeInstalled((int)ContentInfo.Types.Game);
+                            }
                         }
 
                         ((Label)window.FindName("stat_update")).Content = "Failed to connect to the internet";
@@ -174,8 +258,8 @@ namespace Trails_To_Azure_Launcher.Utils
                 {
                     Manifest currentType = manifest.Find(m => String.Equals(m.type, ContentInfo.TypesAsString[i]));
 
-                    String[] currentVersion = currentType.version.Split('.', StringSplitOptions.RemoveEmptyEntries);
-                    String[] liveVersion = liveManifestEntry.version.Split('.', StringSplitOptions.RemoveEmptyEntries);
+                    currentVersion = currentType.version.Split('.', StringSplitOptions.RemoveEmptyEntries);
+                    liveVersion = _liveVersion.version.Split('.', StringSplitOptions.RemoveEmptyEntries);
 
                     for (byte j = 0; j < liveVersion.Length; j++)
                     {
@@ -188,12 +272,17 @@ namespace Trails_To_Azure_Launcher.Utils
                                 {
                                     ((Button)window.FindName(MainWindow.buttonNames[i])).Content = MainWindow.buttonText[i][(int)MainWindow.InstallTypes.Update];
                                     ((Button)window.FindName(MainWindow.buttonNames[i])).ToolTip = MainWindow.buttonTooltips[i][(int)MainWindow.InstallTypes.Update];
-                                    ((Label)window.FindName(MainWindow.statsNames[i])).Content = MainWindow.statusMessages[i][(int)MainWindow.InstallTypes.Update] + "\n          (" + liveManifestEntry.version + ")";
+                                    ((Label)window.FindName(MainWindow.statsNames[i])).Content = MainWindow.statusMessages[i][(int)MainWindow.InstallTypes.Update] + "\n          (" + _liveVersion.version + ")";
                                     ((Label)window.FindName(MainWindow.statsNames[i])).Foreground = Brushes.DarkGoldenrod;
                                     int multithreadRef = i;
                                     Task.Run(() => GUIUtils.autoAdjustMargins(window, MainWindow.statsNames[multithreadRef], true));
                                 }
                             });
+
+                            if ((ContentInfo.Types)i == ContentInfo.Types.GeoLiteEdits)
+                            {
+                                updateForEdits = true;
+                            }
                         }
                     }
                 }
@@ -203,7 +292,14 @@ namespace Trails_To_Azure_Launcher.Utils
             {
                 for (byte i = 0; i < MainWindow.buttonNames.Length; i++)
                 {
-                    ((Button)window.FindName(MainWindow.buttonNames[i])).IsEnabled = (i == 0) ? true : GameUtils.isTypeInstalled((ContentInfo.Types)i);
+                    if ((ContentInfo.Types)i != ContentInfo.Types.GeoLiteEdits)
+                    {
+                        ((Button)window.FindName(MainWindow.buttonNames[i])).IsEnabled = (i == 0) ? true : GameUtils.isTypeInstalled((int)ContentInfo.Types.Game);
+                    }
+                    else if(updateForEdits == true)//If this is the edits and there is an update available for it...
+                    {
+                        ((Button)window.FindName(MainWindow.buttonNames[i])).IsEnabled = GameUtils.isTypeInstalled((int)ContentInfo.Types.Game);
+                    }
                 }
 
                 ((Label)window.FindName("stat_update")).Content = (foundUpdate > 0) ? ((foundUpdate == 1) ? "An update is available." : "Updates are available.") : "Everything is up to date!";

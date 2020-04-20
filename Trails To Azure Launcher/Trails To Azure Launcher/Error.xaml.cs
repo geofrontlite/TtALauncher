@@ -52,33 +52,7 @@ namespace Trails_To_Azure_Launcher
 
         private void OpenBrowserToGitHub(object sender, RoutedEventArgs e)
         {
-            String url = "https://github.com/geofrontlite/TtA_LauncherReleases";
-
-            try
-            {
-                Process.Start(url);
-            }
-            catch
-            {
-                // hack because of this: https://github.com/dotnet/corefx/issues/10361
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                {
-                    url = url.Replace("&", "^&");
-                    Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
-                }
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                {
-                    Process.Start("xdg-open", url);
-                }
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                {
-                    Process.Start("open", url);
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            GUIUtils.openBrowser("https://github.com/geofrontlite/TtALauncher");
         }
     }
 }

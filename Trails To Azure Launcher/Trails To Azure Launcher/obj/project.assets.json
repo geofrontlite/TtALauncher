@@ -187,10 +187,10 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.0.4",
+    "version": "1.1.0",
     "restore": {
       "projectUniqueName": "D:\\Wheat\\Documents\\Kiseki\\Ao no Kiseki\\TtALauncher\\Trails To Azure Launcher\\Trails To Azure Launcher\\Trails To Azure Launcher.csproj",
-      "projectName": "Trails to Azure - Launcher",
+      "projectName": "The Legend of Heroes: Trails to Azure - Launcher",
       "projectPath": "D:\\Wheat\\Documents\\Kiseki\\Ao no Kiseki\\TtALauncher\\Trails To Azure Launcher\\Trails To Azure Launcher\\Trails To Azure Launcher.csproj",
       "packagesPath": "C:\\Users\\Wheat\\.nuget\\packages\\",
       "outputPath": "D:\\Wheat\\Documents\\Kiseki\\Ao no Kiseki\\TtALauncher\\Trails To Azure Launcher\\Trails To Azure Launcher\\obj\\",

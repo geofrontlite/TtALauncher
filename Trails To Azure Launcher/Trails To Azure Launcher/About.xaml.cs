@@ -82,7 +82,7 @@ namespace Trails_To_Azure_Launcher
 
             if (this.IsVisible == true)//Prevents an exception from hitting the x which also causes the window to lose focus
             {
-                if (e.NewFocus.GetType() == typeof(Button) && String.Equals(((Button)e.NewFocus).Name, "btn_checkupdate", StringComparison.OrdinalIgnoreCase) == true)
+                if (e.NewFocus != null && e.NewFocus.GetType() == typeof(Button) && String.Equals(((Button)e.NewFocus).Name, "btn_checkupdate", StringComparison.OrdinalIgnoreCase) == true)
                 {
                     return;
                 }

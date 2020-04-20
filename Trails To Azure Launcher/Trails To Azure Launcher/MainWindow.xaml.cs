@@ -44,6 +44,7 @@ namespace Trails_To_Azure_Launcher
         }
 
         private CloneOptions gitCredentials = new CloneOptions();
+        public String updateURL = String.Empty;
 
         private volatile bool inAProcess = false;
         private volatile bool cleaningTemp = false;
@@ -72,7 +73,7 @@ namespace Trails_To_Azure_Launcher
             new String[]{ "install?INVALID", null, "Update Edits" },//Edits
             new String[]{ "Install Evo Voice Mod", "Uninstall Evo Voice Mod", "Update Evo Voice Mod" },//Voice mod
             new String[]{ "Install Evo BGM Mod", "Uninstall Evo BGM Mod", "Update Evo BGM Mod" },//Evo BGM mod
-            new String[]{ "Install HD Pack\n(w/ DS4 Prompts)", "Uninstall HD Pack\n(and DS4 Prompts)", "Update HD Pack\n(w/ DS4 Prompts)" }//HD Pack
+            new String[]{ "  Install HD Pack\n(w/ DS4 Prompts)", "Uninstall HD Pack\n(and DS4 Prompts)", "Update HD Pack\n(w/ DS4 Prompts)" }//HD Pack
         };
         public static readonly String[][] buttonTooltips = new String[][]
         {
@@ -84,11 +85,11 @@ namespace Trails_To_Azure_Launcher
         };
         public static readonly String[][] statusMessages = new String[][]
         {
-            new String[]{ "Game is installed", "Game is not installed", "An update is available" },//Game
-            new String[]{ "", "", "An update is available" },//Edits
-            new String[]{ "Evo voice mod is\n      installed", "Evo voice mod is not\n         installed", "An update is available" },//Voice mod
-            new String[]{ "Evo BGM mod is\n      installed", "Evo BGM mod is not\n         installed", "An update is available" },//Evo BGM mod
-            new String[]{ "HD pack is installed", "HD pack is not installed", "An update is available" }//HD Pack
+            new String[]{ "Game is installed.", "Game is not installed.", "An update is available." },//Game
+            new String[]{ "Geofront Lite edits are\n           installed.", "Geofront Lite edits are\n        not installed.", "An update is available." },//Edits
+            new String[]{ "Evo voice mod is\n      installed.", "Evo voice mod is not\n         installed.", "An update is available." },//Voice mod
+            new String[]{ "Evo BGM mod is\n      installed.", "Evo BGM mod is not\n         installed.", "An update is available." },//Evo BGM mod
+            new String[]{ "HD pack is installed.", "HD pack is not installed.", "An update is available." }//HD Pack
         };
 
         public MainWindow()
@@ -100,7 +101,7 @@ namespace Trails_To_Azure_Launcher
             installEditsIfGameIsInstalled();
             refreshInfo();
 
-            checkForUpdatesTimer = new Timer((Object) => { GameUtils.checkForUpdates(this); }, null, 30, 21600000);;//Every 6 hours
+            checkForUpdatesTimer = new Timer((Object) => { GameUtils.checkForUpdates(this); }, null, 30, 21600000);//Every 6 hours
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -132,10 +133,15 @@ namespace Trails_To_Azure_Launcher
             ((Label)this.FindName(statsNames[(int)ContentInfo.Types.Game])).Content = 
                         statusMessages[(int)ContentInfo.Types.Game][(installed == false) ? (int)InstallTypes.Uninstall : (int)InstallTypes.Install];
             ((Label)this.FindName(statsNames[(int)ContentInfo.Types.Game])).Foreground = (installed) ? Brushes.DarkGreen : Brushes.DarkRed;
-            ((Button)this.FindName(buttonNames[(int)ContentInfo.Types.GeoLiteEdits])).IsEnabled = installed;
+            ((Button)this.FindName(buttonNames[(int)ContentInfo.Types.GeoLiteEdits])).IsEnabled = false;
             ((Button)this.FindName(buttonNames[(int)ContentInfo.Types.Voice])).IsEnabled = installed;
             ((Button)this.FindName(buttonNames[(int)ContentInfo.Types.Evo_BGM])).IsEnabled = installed;
             ((Button)this.FindName(buttonNames[(int)ContentInfo.Types.HDPack])).IsEnabled = installed;
+
+            //Edits
+            ((Label)this.FindName(statsNames[(int)ContentInfo.Types.GeoLiteEdits])).Content =
+                        statusMessages[(int)ContentInfo.Types.GeoLiteEdits][(installed == false) ? (int)InstallTypes.Uninstall : (int)InstallTypes.Install];
+            ((Label)this.FindName(statsNames[(int)ContentInfo.Types.GeoLiteEdits])).Foreground = (installed) ? Brushes.DarkGreen : Brushes.DarkRed;
 
             installed = GameUtils.isTypeInstalled(ContentInfo.Types.Voice);
             //Voice mod
@@ -293,6 +299,11 @@ namespace Trails_To_Azure_Launcher
             cancelInstallation();
         }
 
+        private void SupportFalcomOST(Object sender, RoutedEventArgs e)
+        {
+            GUIUtils.openBrowser("https://music.apple.com/us/album/the-legend-of-heroes-ao-no/493216163");
+        }
+
         private void RestartAsAdmin(Object sender, RoutedEventArgs e)
         {
             String exePath = Assembly.GetEntryAssembly().Location;// The path of the file that will launch when the shortcut is run
@@ -323,6 +334,33 @@ namespace Trails_To_Azure_Launcher
             ((Label)this.FindName("elev_msg")).Visibility = (show) ? Visibility.Visible : Visibility.Hidden;
             ((Button)this.FindName("elev_yes_btn")).Visibility = (show) ? Visibility.Visible : Visibility.Hidden;
             ((Button)this.FindName("elev_no_btn")).Visibility = (show) ? Visibility.Visible : Visibility.Hidden;
+        }
+
+        private void DownloadUpdate(Object sender, RoutedEventArgs e)
+        {
+            GUIUtils.openBrowser(updateURL);
+
+            if (updateURL != String.Empty)
+            {
+                App.Current.Shutdown();
+            }
+        }
+
+        private void CloseUpdatePrompt(Object sender, RoutedEventArgs e)
+        {
+            toggleUpdatePrompt(false);
+        }
+
+        public void toggleUpdatePrompt(bool show)
+        {
+            ((Rectangle)this.FindName("update_hider")).Visibility = (show) ? Visibility.Visible : Visibility.Hidden;
+            ((Rectangle)this.FindName("update_panel")).Visibility = (show) ? Visibility.Visible : Visibility.Hidden;
+            ((Label)this.FindName("update_header")).Visibility = (show) ? Visibility.Visible : Visibility.Hidden;
+            //The messages must be toggled visible manually
+            ((Label)this.FindName("update_msg_passive")).Visibility = (show) ? ((Label)this.FindName("update_msg_passive")).Visibility : Visibility.Hidden;
+            ((Label)this.FindName("update_msg_aggressive")).Visibility = (show) ? ((Label)this.FindName("update_msg_aggressive")).Visibility : Visibility.Hidden;
+            ((Button)this.FindName("update_yes_btn")).Visibility = (show) ? Visibility.Visible : Visibility.Hidden;
+            ((Button)this.FindName("update_no_btn")).Visibility = (show) ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void toggleInstallationView(bool visible)
@@ -453,6 +491,12 @@ namespace Trails_To_Azure_Launcher
 
                 //Set up the installation prompt
                 toggleInstallationView(true, (byte)(ContentInfo.installMessages[(int)typeProcessing].Length - 1));
+
+                if (typeProcessing == ContentInfo.Types.GeoLiteEdits)//Do not allow for canceling the edits installation
+                {
+                    ((Button)this.FindName("inst_cancel")).Visibility = Visibility.Hidden;
+                }
+
                 ((Label)this.FindName("inst_size")).Content = "Size: " + FileUtils.SizeSuffix(ContentInfo.diskSize[(int)typeProcessing], 2);
 
                 ((Label)this.FindName("inst_oper")).Content = ContentInfo.installMessages[(int)typeProcessing][0];
@@ -668,15 +712,21 @@ namespace Trails_To_Azure_Launcher
                         File.Move(ContentInfo.move_files_src[(int)typeProcessing][i], ContentInfo.move_files_dest[(int)typeProcessing][i], true);
                     }
 
-                    //Movie files out of _temp
+                    //Movie dirs/files out of _temp
                     for (int i = 0; i < ContentInfo.git_dirs[(int)typeProcessing].Length; i++)
                     {
-                        FileUtils.DirectoryMove(ContentInfo.git_dirs[(int)typeProcessing][i], ContentInfo.dirs[(int)typeProcessing][i], true);
+                        if (Directory.Exists(ContentInfo.git_dirs[(int)typeProcessing][i]) == true)
+                        {
+                            FileUtils.DirectoryMove(ContentInfo.git_dirs[(int)typeProcessing][i], ContentInfo.dirs[(int)typeProcessing][i], true);
+                        }   
                     }
 
                     for (int i = 0; i < ContentInfo.git_files[(int)typeProcessing].Length; i++)
                     {
-                        File.Move(ContentInfo.git_files[(int)typeProcessing][i], ContentInfo.files[(int)typeProcessing][i], true);
+                        if (File.Exists(ContentInfo.git_files[(int)typeProcessing][i]) == true)
+                        {
+                            File.Move(ContentInfo.git_files[(int)typeProcessing][i], ContentInfo.files[(int)typeProcessing][i], true);
+                        }
                     }
 
                     //Amend split files
@@ -1207,16 +1257,21 @@ namespace Trails_To_Azure_Launcher
                             File.Move(ContentInfo.move_files_src[(int)typeProcessing][i], ContentInfo.move_files_dest[(int)typeProcessing][i], true);
                         }
 
-                        //Movie files out of _temp
+                        //Movie dirs/files out of _temp
                         for (int i = 0; i < ContentInfo.git_dirs[(int)typeProcessing].Length; i++)
                         {
-                            FileUtils.DirectoryMove(ContentInfo.git_dirs[(int)typeProcessing][i], ContentInfo.dirs[(int)typeProcessing][i], true);
+                            if (Directory.Exists(ContentInfo.git_dirs[(int)typeProcessing][i]) == true)
+                            {
+                                FileUtils.DirectoryMove(ContentInfo.git_dirs[(int)typeProcessing][i], ContentInfo.dirs[(int)typeProcessing][i], true);
+                            }
                         }
 
                         for (int i = 0; i < ContentInfo.git_files[(int)typeProcessing].Length; i++)
                         {
-                            File.Move(ContentInfo.git_files[(int)typeProcessing][i], ContentInfo.files[(int)typeProcessing][i], true);
-                        }
+                            if (File.Exists(ContentInfo.git_files[(int)typeProcessing][i]) == true)
+                            {
+                                File.Move(ContentInfo.git_files[(int)typeProcessing][i], ContentInfo.files[(int)typeProcessing][i], true);
+                            }                        }
 
                         //Amend split files
                         DirectoryInfo[] bigDirs = new DirectoryInfo(".").GetDirectories("__BIG_*", SearchOption.AllDirectories);

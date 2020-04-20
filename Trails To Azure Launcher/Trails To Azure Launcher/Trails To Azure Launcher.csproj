@@ -10,14 +10,14 @@
     <PackageIcon>KeA_icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/geofrontlite/TtALauncher</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageId>Trails to Azure - Launcher</PackageId>
-    <Product>Trails To Azure - Launcher</Product>
+    <PackageId>The Legend of Heroes: Trails to Azure - Launcher</PackageId>
+    <Product>The Legend of Heroes: Trails To Azure - Launcher</Product>
     <Authors>GeofrontLite</Authors>
     <Company></Company>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile></AssemblyOriginatorKeyFile>
     <AssemblyName>Trails to Azure - Launcher</AssemblyName>
-    <Version>1.0.4</Version>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

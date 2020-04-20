@@ -37,7 +37,6 @@ namespace Trails_To_Azure_Launcher.Models
             "https://github.com/geofrontlite/TtA_HDPack"
         };
 
-        public static readonly String githubAuthHeader = "token 2882bdd302e1a56fd739dd956703170073ef6b93";
         public static readonly String[] liveVersionURLs = new String[] 
         {
             "https://raw.githubusercontent.com/geofrontlite/TtA_game/master/version.json?token=APD63P5HLUTNUEMU2P3UQN26SUZ4U",//Game
@@ -60,7 +59,7 @@ namespace Trails_To_Azure_Launcher.Models
         public static readonly String[][] git_files =
             {
                 new String[]{ "_temp/Trails To Azure/config.exe", "_temp/Trails To Azure/ed_ao.dll", "_temp/Trails To Azure/ED_AO.exe", "_temp/Trails To Azure/user.ft" },//base game
-                new String[]{ },//edits (Empty on purpose)
+                new String[]{ "_temp/config.exe", "temp/ED_AO.exe" },//edits
                 new String[]{ "_temp/dinput8.dll" },//voices
                 new String[]{ "_temp/data/text/t_bgm._dt"},//evo bgm
                 new String[]{ "_temp/d3d9.dll" }//HD pack
@@ -79,7 +78,7 @@ namespace Trails_To_Azure_Launcher.Models
         public static readonly String[][] files =
             {
                 new String[]{ "config.exe", "ed_ao.dll", "ED_AO.exe", "user.ft", "config.ini" },//base game
-                new String[]{ },//edits (Empty on purpose)
+                new String[]{ "config.exe", "ED_AO.exe" },//edits
                 new String[]{ "dinput8.dll"},//voices
                 new String[]{ "data/text/t_bgm._dt"},//evo bgm
                 new String[]{ "d3d9.dll", "d3d9.ini" }//HD pack
@@ -162,11 +161,11 @@ namespace Trails_To_Azure_Launcher.Models
 
         public static readonly String[][] uninstallMessages =
             {
-                new String[3]{ "Uninstalling: Trails to Azure", "Deleting files.", "Cleaning up." },//base game
+                new String[3]{ "Uninstalling: Trails to Azure", "Removing files.", "Cleaning up." },//base game
                 new String[]{ },//edits (Empty on purpose)
-                new String[3]{ "Uninstalling: Evo Voice Mod", "Deleting files.", "Cleaning up." },//voice mod
-                new String[3]{ "Uninstalling: Evo BGM Mod", "Deleting files.", "Cleaning up." },//evo bgm mod
-                new String[3]{ "Uninstalling: HD Pack", "Deleting files.", "Cleaning up." }//HD mod
+                new String[3]{ "Uninstalling: Evo Voice Mod", "Removing files.", "Cleaning up." },//voice mod
+                new String[3]{ "Uninstalling: Evo BGM Mod", "Removing files.", "Cleaning up." },//evo bgm mod
+                new String[3]{ "Uninstalling: HD Pack", "Removing files.", "Cleaning up." }//HD mod
             };
 
         public static readonly String[][] updateMessages =

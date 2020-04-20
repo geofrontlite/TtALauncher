@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Trails_To_Azure_Launcher"
         mc:Ignorable="d"
-        Title="Trails to Azure - Launcher" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" WindowStyle="SingleBorderWindow" Height="700" Width="840" Background="Gainsboro" MinWidth="640" MinHeight="600" ResizeMode="CanMinimize" Icon="/KeA_icon.png" ShowInTaskbar="True">
+        Title="The Legend of Heroes: Trails to Azure - Launcher" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" WindowStyle="SingleBorderWindow" Height="700" Width="840" Background="Gainsboro" MinWidth="640" MinHeight="600" ResizeMode="CanMinimize" Icon="/KeA_icon.png" ShowInTaskbar="True">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.25*"></ColumnDefinition>
@@ -56,7 +56,7 @@
 
         <Label Content="Geofront Lite&#10;       Edits" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" FontSize="22" FontFamily="Arial" Foreground="#FF000246" FontWeight="Bold" Margin="0,210,0,0" FontStyle="Normal"/>
 
-        <Button x:Name="edits_btn" Content="Update Edits" Width="Auto" Grid.Row="1" Height="30" VerticalAlignment="Top" Margin="16,275,16,20" Background="#FFD0D0D0" FontSize="16" BorderBrush="#FF979797"/>
+        <Button x:Name="edits_btn" Content="Update Edits" Width="Auto" Grid.Row="1" Height="30" VerticalAlignment="Top" Margin="16,275,16,20" Background="#FFD0D0D0" FontSize="16" BorderBrush="#FF979797" IsEnabled="False"/>
 
         <Border BorderThickness="1" Grid.Column="0" Margin="2,320,2,0" IsHitTestVisible="False" OpacityMask="White" Grid.Row="1" Height="2" VerticalAlignment="Top" BorderBrush="#FF7D7D7D" Grid.ColumnSpan="2"/>
 
@@ -72,17 +72,17 @@
         <Label Content="Status" Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Arial" FontSize="20" FontWeight="Bold"/>
 
         <Label x:Name="stat_game" Content="Game is not installed" Grid.Column="1" HorizontalAlignment="Center" Margin="0,100,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Arial" FontSize="18" Foreground="#FFB70000"/>
-        <Label x:Name="stat_edits" Content="" Grid.Column="1" HorizontalAlignment="Center" Margin="0,250,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Arial" FontSize="18" Foreground="#FFB70000"/>
+        <Label x:Name="stat_edits" Content="Geofront Lite edits are&#10;        not installed" Grid.Column="1" HorizontalAlignment="Center" Margin="0,250,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Arial" FontSize="18" Foreground="#FFB70000"/>
         <Label x:Name="stat_voice" Content="Evo voice mod is not&#10;          installed" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" FontFamily="Arial" FontSize="18" Foreground="#FFB70000" Margin="0,350,0,0"/>
         <Label x:Name="stat_evobgm" Content="Evo BGM mod is not&#10;          installed" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" FontFamily="Arial" FontSize="18" Foreground="#FFB70000" Margin="0,405,0,0"/>
         <Label x:Name="stat_hdpack" Content="HD Pack is not installed" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" FontFamily="Arial" FontSize="18" Foreground="#FFB70000" Margin="0,480,0,0"/>
 
 
         <Rectangle x:Name="inst_hider" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Grid.Row="1" Stroke="Black" VerticalAlignment="Stretch" Fill="#54000000" Visibility="Hidden"/>
-        <Rectangle x:Name="inst_panel" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Height="250" Grid.Row="1" Stroke="Black" VerticalAlignment="Stretch" Width="600" Fill="#FFCBCBCB" Margin="0,0,0,150" Visibility="Visible"/>
-        <Label x:Name="inst_oper" Content="{}{OPERATION}" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="3" FontSize="36" Margin="141,130,-2,0" FontFamily="Arial" FontWeight="Bold" Visibility="Visible"/>
+        <Rectangle x:Name="inst_panel" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Height="250" Grid.Row="1" Stroke="Black" VerticalAlignment="Stretch" Width="600" Fill="#FFCBCBCB" Margin="0,0,0,150" Visibility="Hidden"/>
+        <Label x:Name="inst_oper" Content="{}{OPERATION}" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="3" FontSize="36" Margin="141,130,-2,0" FontFamily="Arial" FontWeight="Bold" Visibility="Hidden"/>
         
-        <Label x:Name="inst_proc1" Content="{}{PROCEEDURE}" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" FontSize="16" Margin="150,0,0,240" FontFamily="Arial" Visibility="Visible"/>
+        <Label x:Name="inst_proc1" Content="{}{PROCEEDURE}" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" FontSize="16" Margin="150,0,0,240" FontFamily="Arial" Visibility="Hidden"/>
         <Label x:Name="inst_proc2" Content="{}{PROCEEDURE}" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" FontSize="16" Margin="150,0,0,200" FontFamily="Arial" Visibility="Hidden"/>
         <Label x:Name="inst_proc3" Content="{}{PROCEEDURE}" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" FontSize="16" Margin="150,0,0,160" FontFamily="Arial" Visibility="Hidden"/>
         <Label x:Name="inst_proc4" Content="{}{PROCEEDURE}" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" FontSize="16" Margin="150,0,0,120" FontFamily="Arial" Visibility="Hidden"/>
@@ -97,7 +97,8 @@
         <Label x:Name="inst_cancelmsg" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" Visibility="Hidden" Margin="265,58,0,0" Foreground="#FF383838" FontSize="13"/>
         
 
-        <Label x:Name="stat_update" Content="Everything is up to date!" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Bottom" FontFamily="Arial" Foreground="#FF656565" Margin="4,4,0,0"/>
+        <Label x:Name="stat_update" Content="Everything is up to date!" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Bottom" FontFamily="Arial" Foreground="#FF656565" Margin="4,4,0,0" Grid.ColumnSpan="2"/>
+        <Button Content="Support Falcom" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontFamily="Arial" Foreground="Blue" Margin="4,4,0,0" Grid.Row="1" Grid.ColumnSpan="2" FontSize="14" Background="{x:Null}" BorderThickness="1,1,1,1" ClipToBounds="True" BorderBrush="{x:Null}" Click="SupportFalcomOST"/>
 
         <Rectangle x:Name="elev_hider" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Grid.Row="1" Stroke="Black" VerticalAlignment="Stretch" Fill="#54000000" Visibility="Hidden"/>
         <Rectangle x:Name="elev_panel" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Height="180" Grid.Row="1" Stroke="Black" VerticalAlignment="Stretch" Width="600" Fill="#FFCBCBCB" Margin="0,0,0,150" Visibility="Hidden"/>
@@ -107,5 +108,15 @@
 
         <Button x:Name="elev_yes_btn" Content="Yes" HorizontalAlignment="Center" Margin="0,290,200,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="3" FontSize="18" Padding="30,4,30,4" Background="#FFC2C4D9" Click="RestartAsAdmin" Visibility="Hidden"/>
         <Button x:Name="elev_no_btn" Content="No" HorizontalAlignment="Center" Margin="0,290,-200,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="3" FontSize="18" Padding="30,4,30,4" Background="#FFE4E4E4" Click="CloseInsuffPrivsPrompt" Visibility="Hidden"/>
+
+        <Rectangle x:Name="update_hider" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Grid.Row="1" Stroke="Black" VerticalAlignment="Stretch" Fill="#54000000" Visibility="Hidden"/>
+        <Rectangle x:Name="update_panel" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Height="180" Grid.Row="1" Stroke="Black" VerticalAlignment="Stretch" Width="600" Fill="#FFCBCBCB" Margin="0,0,0,150" Visibility="Hidden"/>
+
+        <Label x:Name="update_header" Content="An Update is Available" HorizontalAlignment="Center" Margin="0,160,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="3" FontSize="36" Visibility="Hidden"/>
+        <Label x:Name="update_msg_passive" Content="Without this update, you might be missing key features and bugfixes.&#10;                                  Would you like to update?" HorizontalAlignment="Center" Margin="0,225,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="3" FontSize="18" Visibility="Hidden"/>
+        <Label x:Name="update_msg_aggressive" Content="Without this important update, you won't be able to automatically&#10;     update the game or mods. Would you like to update now?" HorizontalAlignment="Center" Margin="0,225,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="3" FontSize="18" Visibility="Hidden"/>
+
+        <Button x:Name="update_yes_btn" Content="Yes" HorizontalAlignment="Center" Margin="0,290,200,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="3" FontSize="18" Padding="30,4,30,4" Background="#FFC2C4D9" Click="DownloadUpdate" Visibility="Hidden"/>
+        <Button x:Name="update_no_btn" Content="No" HorizontalAlignment="Center" Margin="0,290,-200,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="3" FontSize="18" Padding="30,4,30,4" Background="#FFE4E4E4" Click="CloseUpdatePrompt" Visibility="Hidden"/>
     </Grid>
 </Window>
